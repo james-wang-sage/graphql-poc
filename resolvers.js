@@ -1,6 +1,7 @@
 const fetch = require('node-fetch');
 
 const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uSWQiOiJqWkhOZHQ4VTlHS1JMekVkaFZlVUVmbzVZcEF2TVEuLiIsImVuZHBvaW50IjoiaHR0cHM6XC9cL2RldjA5LmludGFjY3QuY29tXC91c2Vyc1wvamFtZXMud2FuZ1wvcHJvamVjdHMueWFtbHRyYWluaW5nbGFiXC9hcGlcL3YxXC9hcGlcLyIsImNsaWVudElkIjoiZDRmMmI2YjMxODE3NGI5YTYwYTcuSU5UQUNDVC5hcHAuc2FnZS5jb20iLCJjbnlJZCI6IllBTUxUcmFpbmluZ0NvbXBhbnkifQ.Sv_q4RbTU3z2zrQnHhBxDAge78tLtvJyWLaY6RxV8qw';
+const endpoint = 'https://dev01.intacct.com/users/james.wang/projects.yamltraininglab/api/';
 
 const Query = {
     journalentry: (root, {id}) => getJournalEntryByID(id),
@@ -26,7 +27,7 @@ async function getJournalEntryByID(id) {
         redirect: 'follow'
     };
 
-    const response = await fetch("https://dev01.intacct.com/users/james.wang/projects.yamltraininglab/api/v0/objects/journalentry/" + id, requestOptions)
+    const response = await fetch(endpoint + "v0/objects/journalentry/" + id, requestOptions)
       .then(response => response.json())
       .catch(error => console.log('error', error));
 
@@ -62,7 +63,7 @@ async function getJournalEntryCollection() {
         redirect: 'follow'
     };
 
-    const response = await fetch("https://dev01.intacct.com/users/james.wang/projects.yamltraininglab/api/v0/services/query", requestOptions)
+    const response = await fetch(endpoint + "v0/services/query", requestOptions)
       .then(response => response.json())
       .catch(error => console.log('error', error));
 
@@ -81,7 +82,7 @@ async function getDepartmentByID(id) {
       redirect: 'follow'
   };
 
-  const response = await fetch("https://dev01.intacct.com/users/james.wang/projects.yamltraininglab/api/v0/objects/department/" + id, requestOptions)
+  const response = await fetch(endpoint + "v0/objects/department/" + id, requestOptions)
     .then(response => response.json())
     .catch(error => console.log('error', error));
 
@@ -114,7 +115,7 @@ async function getDepartmentCollection() {
         redirect: 'follow'
     };
 
-    const response = await fetch("https://dev01.intacct.com/users/james.wang/projects.yamltraininglab/api/v0/services/query", requestOptions)
+    const response = await fetch(endpoint + "v0/services/query", requestOptions)
       .then(response => response.json())
       .catch(error => console.log('error', error));
 
@@ -134,7 +135,7 @@ async function createDepartment(input) {
       redirect: 'follow'
   };
 
-  const response = await fetch("https://dev01.intacct.com/users/james.wang/projects.yamltraininglab/api/v0/objects/department", requestOptions)
+  const response = await fetch(endpoint + "v0/objects/department", requestOptions)
     .then(response => response.json())
     .catch(error => console.log('error', error));
 
