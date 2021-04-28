@@ -1,0 +1,43 @@
+type Query {
+    journalentry(id: ID!): JournalEntry
+    journalentries: [JournalEntry]
+    department(id: ID!): Department
+    departments: [Department]
+}
+
+type Mutation {
+    createDepartment(input: CreateDepartmentInput): Department
+}
+
+type JournalEntry {
+    id: ID!
+    key: String
+    txnNumber: Int
+    description: String
+    journalSymbol: String
+    module: String
+    state: String
+    lines: [JournalEntryLine]
+}
+
+type JournalEntryLine {
+    id: ID!
+    key: String
+    lineNumber: Int
+    txnType: Int
+    txnAmount: Int
+    state: String
+    journalentry: JournalEntry
+}
+
+type Department {
+    id: ID!
+    key: String
+    name: String
+    status: String
+}
+
+input CreateDepartmentInput {
+    id: String
+    name: String
+}
